@@ -127,7 +127,7 @@ body {
 		font-size: 15px;
 	}
 }
-.search-form {
+.form-group {
 	position: relative;
 	clear: both;
 	
@@ -136,6 +136,7 @@ body {
 	}
 
 	.icon-search {
+		cursor: pointer;
 		color: #2c45bd;
 		font-size: 20px;
 		line-height: 0;
@@ -168,6 +169,10 @@ body {
 
 .restaurant-name {
 	font-size: 36px;
+}
+
+.grade-info {
+	margin-bottom: 25px;
 }
 
 .error-message {

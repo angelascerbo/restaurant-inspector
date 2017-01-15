@@ -86,7 +86,7 @@
 					_react2.default.createElement(_Home2.default, null),
 					_react2.default.createElement(
 						'footer',
-						null,
+						{ className: 'hidden' },
 						_react2.default.createElement(
 							'div',
 							null,
@@ -21617,7 +21617,7 @@
 	
 	var _views = __webpack_require__(180);
 	
-	var _APIManager = __webpack_require__(296);
+	var _APIManager = __webpack_require__(184);
 	
 	var _APIManager2 = _interopRequireDefault(_APIManager);
 	
@@ -21640,7 +21640,8 @@
 			_this.state = {
 				restaurantInfo: null,
 				isResult: null,
-				isSearching: false
+				isSearching: false,
+				invalidSearchTerm: null
 			};
 			return _this;
 		}
@@ -21674,7 +21675,8 @@
 					if (!resultsList.length) {
 						_this2.setState({
 							isResult: false,
-							isSearching: false
+							isSearching: false,
+							invalidSearchTerm: searchTerm
 						});
 	
 						return;
@@ -21732,7 +21734,8 @@
 				this.setState({
 					restaurantInfo: null,
 					isResult: null,
-					isSearching: false
+					isSearching: false,
+					invalidSearchTerm: null
 				});
 			}
 		}, {
@@ -21751,7 +21754,7 @@
 					content = _react2.default.createElement(
 						'div',
 						null,
-						_react2.default.createElement(_views.SearchInput, { onUpdate: this.submitSearch.bind(this), onFocus: this.inputActive.bind(this) })
+						_react2.default.createElement(_views.SearchInput, { onUpdate: this.submitSearch.bind(this), onFocus: this.inputActive.bind(this), invalidSearchTerm: this.state.invalidSearchTerm })
 					);
 				}
 	
@@ -21776,7 +21779,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'search-container' },
 					errorMessage,
 					content
 				);
@@ -21803,7 +21806,7 @@
 	
 	var _SearchInput2 = _interopRequireDefault(_SearchInput);
 	
-	var _SearchResult = __webpack_require__(183);
+	var _SearchResult = __webpack_require__(182);
 	
 	var _SearchResult2 = _interopRequireDefault(_SearchResult);
 	
@@ -21816,7 +21819,7 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -21851,62 +21854,64 @@
 		}
 	
 		_createClass(SearchInput, [{
-			key: "updateSearch",
+			key: 'updateSearch',
 			value: function updateSearch(event) {
 				this.setState({
 					restaurantName: event.target.value
 				});
 			}
 		}, {
-			key: "submitSearch",
+			key: 'submitSearch',
 			value: function submitSearch(event) {
-				//console.log('submitSearch: '+this.state.restaurantName)
 				event.preventDefault();
 				this.props.onUpdate(this.state.restaurantName);
 			}
 		}, {
-			key: "inputActive",
+			key: 'inputActive',
 			value: function inputActive(event) {
 				this.props.onFocus(true);
 			}
 		}, {
-			key: "render",
+			key: 'render',
 			value: function render() {
+	
+				var placeholderText = this.props.invalidSearchTerm == null ? 'Restaurant' : this.props.invalidSearchTerm;
+	
 				return _react2.default.createElement(
-					"div",
+					'div',
 					null,
 					_react2.default.createElement(
-						"div",
-						{ className: "header-intro row clearfix" },
+						'div',
+						{ className: 'header-intro row clearfix' },
 						_react2.default.createElement(
-							"div",
-							{ className: "col-xs-1 icon-container" },
-							_react2.default.createElement("span", { className: "icon-restaurant-cutlery" })
+							'div',
+							{ className: 'col-xs-1 icon-container' },
+							_react2.default.createElement('span', { className: 'icon-restaurant-cutlery' })
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "col-xs-10 col-sm-11 header-text-container" },
+							'div',
+							{ className: 'col-xs-10 col-sm-11 header-text-container' },
 							_react2.default.createElement(
-								"h1",
-								{ className: "app-title" },
-								"A'OK?"
+								'h1',
+								{ className: 'app-title' },
+								'A\'OK?'
 							),
 							_react2.default.createElement(
-								"div",
-								{ className: "app-description" },
-								"Search for a Restaurant's NYC Inspection Grade. Know Before You Go."
+								'div',
+								{ className: 'app-description' },
+								'Search for a Restaurant\'s NYC Inspection Grade. Know Before You Go.'
 							)
 						)
 					),
 					_react2.default.createElement(
-						"form",
-						{ role: "search", className: "search-form", "data-search": "", action: "/", acceptCharset: "UTF-8", method: "get" },
+						'form',
+						{ role: 'search', className: 'search-form' },
 						_react2.default.createElement(
-							"div",
-							{ className: "form-group" },
-							_react2.default.createElement("input", { type: "search", className: "form-control", onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: "Restaurant" }),
-							_react2.default.createElement("span", { className: "icon-search", onClick: this.submitSearch.bind(this) }),
-							_react2.default.createElement("input", { type: "submit", className: "hidden", name: "commit", value: "Search", onClick: this.submitSearch.bind(this) })
+							'div',
+							{ className: 'form-group' },
+							_react2.default.createElement('input', { type: 'search', className: 'form-control', onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: placeholderText }),
+							_react2.default.createElement('span', { className: 'icon-search', onClick: this.submitSearch.bind(this) }),
+							_react2.default.createElement('input', { type: 'submit', className: 'hidden', name: 'commit', value: 'Search', onClick: this.submitSearch.bind(this) })
 						)
 					)
 				);
@@ -21919,8 +21924,7 @@
 	exports.default = SearchInput;
 
 /***/ },
-/* 182 */,
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21935,7 +21939,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _DateHelper = __webpack_require__(184);
+	var _DateHelper = __webpack_require__(183);
 	
 	var _DateHelper2 = _interopRequireDefault(_DateHelper);
 	
@@ -21970,6 +21974,7 @@
 			key: 'render',
 			value: function render() {
 				var formattedDate = _DateHelper2.default.formatDate(this.props.currentRestaurant.date);
+				var grade = this.props.currentRestaurant.grade == 'Z' ? 'PENDING' : this.props.currentRestaurant.grade;
 	
 				return _react2.default.createElement(
 					'div',
@@ -21992,12 +21997,12 @@
 						'h3',
 						{ className: 'grade-info' },
 						'Grade: ',
-						this.props.currentRestaurant.grade
+						grade
 					),
 					_react2.default.createElement(
 						'h4',
 						null,
-						'This establishment\'s last inspection was on: ',
+						'This restaurant was last inspection on: ',
 						formattedDate
 					)
 				);
@@ -22010,7 +22015,7 @@
 	exports.default = SearchResult;
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22025,118 +22030,7 @@
 	};
 
 /***/ },
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */
+/* 184 */
 /***/ function(module, exports) {
 
 	"use strict";

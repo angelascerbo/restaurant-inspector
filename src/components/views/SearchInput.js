@@ -15,10 +15,8 @@ class SearchInput extends Component {
 	}
 
 	submitSearch(event) {
-		//console.log('submitSearch: '+this.state.restaurantName)
 		event.preventDefault()
 		this.props.onUpdate(this.state.restaurantName)
-
 	}
 
 	inputActive(event) {
@@ -26,8 +24,11 @@ class SearchInput extends Component {
 	}
 
 	render(){
+
+		let placeholderText = (this.props.invalidSearchTerm == null) ? 'Restaurant' : this.props.invalidSearchTerm
+
 		return(
-			<div>			
+			<div>
 				<div className="header-intro row clearfix">	
 					<div className="col-xs-1 icon-container">
 						<span className="icon-restaurant-cutlery"></span>
@@ -39,9 +40,9 @@ class SearchInput extends Component {
 					</div>
 				</div>
 
-				<form role="search" className="search-form" data-search="" action="/" acceptCharset="UTF-8" method="get">
+				<form role="search" className="search-form">
 					<div className="form-group">
-						<input type="search" className="form-control" onChange={this.updateSearch.bind(this)} onFocus={this.inputActive.bind(this)} placeholder="Restaurant" />
+						<input type="search" className="form-control" onChange={this.updateSearch.bind(this)} onFocus={this.inputActive.bind(this)} placeholder={placeholderText} />
 						<span className="icon-search" onClick={this.submitSearch.bind(this)}></span>
 						<input type="submit" className="hidden" name="commit" value="Search" onClick={this.submitSearch.bind(this)}></input>
 					</div>

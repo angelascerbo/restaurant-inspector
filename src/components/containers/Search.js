@@ -8,7 +8,8 @@ class Search extends Component {
 		this.state = {
 			restaurantInfo: null,
 			isResult: null,
-			isSearching: false
+			isSearching: false,
+			invalidSearchTerm: null
 		}
 	}
 
@@ -38,7 +39,8 @@ class Search extends Component {
 			if (!resultsList.length) {
 				this.setState({
 					isResult: false,
-					isSearching: false
+					isSearching: false,
+					invalidSearchTerm: searchTerm
 				})
 
 				return
@@ -93,7 +95,8 @@ class Search extends Component {
 		this.setState({
 			restaurantInfo: null,
 			isResult: null,
-			isSearching: false
+			isSearching: false,
+			invalidSearchTerm: null
 		})
 	}
 
@@ -110,7 +113,7 @@ class Search extends Component {
 		} else {
 			content = (
 				<div>
-					<SearchInput onUpdate={this.submitSearch.bind(this)} onFocus={this.inputActive.bind(this)} />
+					<SearchInput onUpdate={this.submitSearch.bind(this)} onFocus={this.inputActive.bind(this)} invalidSearchTerm={this.state.invalidSearchTerm}/>
 				</div>
 			)
 		}
@@ -131,7 +134,7 @@ class Search extends Component {
 		}
 
 		return(
-			<div>
+			<div className="search-container">
 				{ errorMessage }
 				{ content }
 			</div>
