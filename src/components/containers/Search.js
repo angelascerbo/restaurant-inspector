@@ -78,10 +78,6 @@ class Search extends Component {
 		})
 	}
 
-	componentDidUpdate(){
-		console.log('componentDidUpdate, isSearching == '+JSON.stringify(this.state.isSearching))
-	}
-
 	inputActive(status){
 		if(status == true) {
 			$('#errorMessage').fadeOut('slow')
@@ -113,7 +109,7 @@ class Search extends Component {
 		} else {
 			content = (
 				<div>
-					<SearchInput onUpdate={this.submitSearch.bind(this)} onFocus={this.inputActive.bind(this)} invalidSearchTerm={this.state.invalidSearchTerm}/>
+					<SearchInput onUpdate={this.submitSearch.bind(this)} onFocus={this.inputActive.bind(this)} isResult={this.state.isResult} invalidSearchTerm={this.state.invalidSearchTerm}/>
 				</div>
 			)
 		}
@@ -124,12 +120,6 @@ class Search extends Component {
 					<div className="bubble-1"></div>
 					<div className="bubble-2"></div>
 				</div>
-			)
-		}
-
-		if (this.state.isResult == false) {
-			errorMessage = (
-				<div id="errorMessage" className="error-message">Oops! Restaurant not found. <br/> Check your spelling and be sure to enter the full business name.</div>
 			)
 		}
 

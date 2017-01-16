@@ -82,7 +82,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'container-fluid' },
+					null,
 					_react2.default.createElement(_Home2.default, null),
 					_react2.default.createElement(
 						'footer',
@@ -21588,8 +21588,12 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'app-container col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3' },
-					_react2.default.createElement(_Search2.default, null)
+					{ className: 'container clearfix' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'app-container col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3' },
+						_react2.default.createElement(_Search2.default, null)
+					)
 				);
 			}
 		}]);
@@ -21714,11 +21718,6 @@
 				});
 			}
 		}, {
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate() {
-				console.log('componentDidUpdate, isSearching == ' + JSON.stringify(this.state.isSearching));
-			}
-		}, {
 			key: 'inputActive',
 			value: function inputActive(status) {
 				if (status == true) {
@@ -21754,7 +21753,7 @@
 					content = _react2.default.createElement(
 						'div',
 						null,
-						_react2.default.createElement(_views.SearchInput, { onUpdate: this.submitSearch.bind(this), onFocus: this.inputActive.bind(this), invalidSearchTerm: this.state.invalidSearchTerm })
+						_react2.default.createElement(_views.SearchInput, { onUpdate: this.submitSearch.bind(this), onFocus: this.inputActive.bind(this), isResult: this.state.isResult, invalidSearchTerm: this.state.invalidSearchTerm })
 					);
 				}
 	
@@ -21764,16 +21763,6 @@
 						{ className: 'loader' },
 						_react2.default.createElement('div', { className: 'bubble-1' }),
 						_react2.default.createElement('div', { className: 'bubble-2' })
-					);
-				}
-	
-				if (this.state.isResult == false) {
-					errorMessage = _react2.default.createElement(
-						'div',
-						{ id: 'errorMessage', className: 'error-message' },
-						'Oops! Restaurant not found. ',
-						_react2.default.createElement('br', null),
-						' Check your spelling and be sure to enter the full business name.'
 					);
 				}
 	
@@ -21876,21 +21865,34 @@
 			value: function render() {
 	
 				var placeholderText = this.props.invalidSearchTerm == null ? 'Restaurant' : this.props.invalidSearchTerm;
+				var toggleSearchError = null;
+	
+				if (this.props.isResult == false) {
+					toggleSearchError = _react2.default.createElement(
+						'div',
+						{ id: 'errorMessage', className: 'error-message' },
+						'Oops! Restaurant not found. ',
+						_react2.default.createElement('br', null),
+						' Check your spelling and be sure to enter the full business name.'
+					);
+				} else {
+					toggleSearchError = _react2.default.createElement('input', { type: 'submit', className: 'btn btn-default hidden-lg', name: 'commit', value: 'Search', onClick: this.submitSearch.bind(this) });
+				}
 	
 				return _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'header-intro row clearfix' },
+						{ className: 'header-intro clearfix' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-xs-1 icon-container' },
+							{ className: 'icon-container' },
 							_react2.default.createElement('span', { className: 'icon-restaurant-cutlery' })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-xs-10 col-sm-11 header-text-container' },
+							{ className: 'header-text-container' },
 							_react2.default.createElement(
 								'h1',
 								{ className: 'app-title' },
@@ -21909,9 +21911,13 @@
 						_react2.default.createElement(
 							'div',
 							{ className: 'form-group' },
-							_react2.default.createElement('input', { type: 'search', className: 'form-control', onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: placeholderText }),
-							_react2.default.createElement('span', { className: 'icon-search', onClick: this.submitSearch.bind(this) }),
-							_react2.default.createElement('input', { type: 'submit', className: 'hidden', name: 'commit', value: 'Search', onClick: this.submitSearch.bind(this) })
+							_react2.default.createElement(
+								'div',
+								{ className: 'form-input-container' },
+								_react2.default.createElement('input', { type: 'search', className: 'form-control', onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: placeholderText }),
+								_react2.default.createElement('span', { className: 'icon-search', onClick: this.submitSearch.bind(this) })
+							),
+							toggleSearchError
 						)
 					)
 				);

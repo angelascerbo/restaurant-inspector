@@ -28,6 +28,10 @@ $lg-max: "only screen and (max-width:none)";
 	/* Large devices (large desktops, 1200px and up) */
 }
 
+@-ms-viewport{
+  width: device-width;
+}
+
 body {
 	font-family: 'Kalam', cursive;
 }
@@ -67,43 +71,50 @@ body {
 		}
 }
 
-.container-fluid {
+.container {
 	height: 100vh;
 	position: relative;
 }
 
+
 .app-container {
-	z-index: 3;
 	background-color: rgba(35,35,40,.923);
 	padding: 25px;
 	top: 50%;
 	transform: translateY(-50%);
 	height: 300px; 
+	z-index: 3;
 
 	@media #{$sm-min} {
 		padding: 35px;
+	}
+
+	@media #{$lg-min} {
+		min-width: 600px;
 	}
 }
 
 .icon-container {
 	font-size: 80px;
 	transform: rotate(-25deg);
+	width: 10%;
+	float: left;
+}
+
+.header-text-container {
+	width: 80%;
+	float: right;
+	text-align: left;
+
+	@media #{$sm-min} {
+		width: 88%;
+	}
 }
 
 .header-text-container,
 .icon-container {
-	//display: block;
-	//float: left;
 	color: white;
 
-}
-
-.header-text-container {
-	padding-left: 40px;
-
-	@media #{$sm-min} {
-		padding-left: 30px;
-	}
 }
 
 .header-intro {
@@ -128,27 +139,41 @@ body {
 	}
 }
 .form-group {
-	position: relative;
 	clear: both;
-	
-	.form-control{
-		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+	.form-input-container {
+		position: relative;
+
+		.icon-search {
+			cursor: pointer;
+			color: #2c45bd;
+			font-size: 20px;
+			line-height: 0;
+			position: absolute;
+			right: 15px;
+			text-align: center;
+			top: 50%;
+			z-index: 1;
+			-moz-animation: bounceIn 750ms linear infinite alternate;
+			-webkit-animation: bounceIn 750ms linear infinite alternate;
+			-o-animation: bounceIn 750ms linear infinite alternate;	
+			animation: bounceIn 750ms linear infinite alternate;	
+		}
 	}
 
-	.icon-search {
-		cursor: pointer;
+	.btn {
+		margin: 10px auto 0;
+		text-transform: uppercase;
+		width: 150px;
 		color: #2c45bd;
-		font-size: 20px;
-		line-height: 0;
-		position: absolute;
-		right: 15px;
-		text-align: center;
-		top: 50%;
-		z-index: 1;
-		animation: bounceIn 750ms linear infinite alternate;
-		-moz-animation: bounceIn 750ms linear infinite alternate;
-		-webkit-animation: bounceIn 750ms linear infinite alternate;
-		-o-animation: bounceIn 750ms linear infinite alternate;		
+		font-weight: 600;
+		border: 1px solid #2c45bd;
+		display: block;
+	}
+
+	.form-control,
+	.btn {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	}
 }
 
@@ -169,6 +194,7 @@ body {
 
 .restaurant-name {
 	font-size: 36px;
+	margin-top: 40px;
 }
 
 .grade-info {
@@ -178,7 +204,6 @@ body {
 .error-message {
 	position: absolute;
 	bottom: 30px;
-	padding: 10px;
 	font-size: 15px;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: #f93e11;
