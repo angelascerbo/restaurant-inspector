@@ -21875,8 +21875,6 @@
 						_react2.default.createElement('br', null),
 						' Check your spelling and be sure to enter the full business name.'
 					);
-				} else {
-					toggleSearchError = _react2.default.createElement('input', { type: 'submit', className: 'btn btn-default hidden-lg', name: 'commit', value: 'Search', onClick: this.submitSearch.bind(this) });
 				}
 	
 				return _react2.default.createElement(
@@ -21910,15 +21908,19 @@
 						{ role: 'search', className: 'search-form' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'form-group' },
+							{ className: 'input-group' },
+							_react2.default.createElement('input', { type: 'text', className: 'form-control', onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: placeholderText }),
 							_react2.default.createElement(
-								'div',
-								{ className: 'form-input-container' },
-								_react2.default.createElement('input', { type: 'search', className: 'form-control', onChange: this.updateSearch.bind(this), onFocus: this.inputActive.bind(this), placeholder: placeholderText }),
-								_react2.default.createElement('span', { className: 'icon-search', onClick: this.submitSearch.bind(this) })
-							),
-							toggleSearchError
-						)
+								'span',
+								{ className: 'input-group-btn' },
+								_react2.default.createElement(
+									'button',
+									{ className: 'btn btn-default', type: 'submit', onClick: this.submitSearch.bind(this) },
+									_react2.default.createElement('span', { className: 'icon-search' })
+								)
+							)
+						),
+						toggleSearchError
 					)
 				);
 			}

@@ -32,10 +32,6 @@ class SearchInput extends Component {
 			toggleSearchError = (
 				<div id="errorMessage" className="error-message">Oops! Restaurant not found. <br/> Check your spelling and be sure to enter the full business name.</div>
 			)
-		} else {
-			toggleSearchError = (
-				<input type="submit" className="btn btn-default hidden-lg" name="commit" value="Search" onClick={this.submitSearch.bind(this)}></input>
-			)
 		}
 
 		return(
@@ -52,13 +48,14 @@ class SearchInput extends Component {
 				</div>
 
 				<form role="search" className="search-form">
-					<div className="form-group">
-						<div className="form-input-container">
-							<input type="search" className="form-control" onChange={this.updateSearch.bind(this)} onFocus={this.inputActive.bind(this)} placeholder={placeholderText} />
-							<span className="icon-search" onClick={this.submitSearch.bind(this)}></span>
-						</div>
-						{ toggleSearchError }
+					<div className="input-group">
+						<input type="text" className="form-control" onChange={this.updateSearch.bind(this)} onFocus={this.inputActive.bind(this)} placeholder={placeholderText}/>
+						<span className="input-group-btn">
+							<button className="btn btn-default" type="submit" onClick={this.submitSearch.bind(this)}><span className="icon-search"></span></button>
+						</span>
 					</div>
+						{ toggleSearchError }
+
 				</form>
 			</div>
 		)
