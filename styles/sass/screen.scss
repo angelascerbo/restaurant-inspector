@@ -138,42 +138,32 @@ body {
 		font-size: 15px;
 	}
 }
-.form-group {
-	clear: both;
 
-	.form-input-container {
-		position: relative;
-
-		.icon-search {
-			cursor: pointer;
-			color: #2c45bd;
-			font-size: 20px;
-			line-height: 0;
-			position: absolute;
-			right: 15px;
-			text-align: center;
-			top: 50%;
-			z-index: 1;
-			-moz-animation: bounceIn 750ms linear infinite alternate;
-			-webkit-animation: bounceIn 750ms linear infinite alternate;
-			-o-animation: bounceIn 750ms linear infinite alternate;	
-			animation: bounceIn 750ms linear infinite alternate;	
-		}
-	}
-
-	.btn {
-		margin: 10px auto 0;
-		text-transform: uppercase;
-		width: 150px;
-		color: #2c45bd;
-		font-weight: 600;
-		border: 1px solid #2c45bd;
-		display: block;
-	}
-
-	.form-control,
-	.btn {
+.search-form {
+	input.form-control {
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+
+	.icon-search {
+		cursor: pointer;
+		color: white;
+		font-size: 19px;
+	}
+
+	.btn-default,
+	.btn-default:hover,
+	.form-control {
+		border-color: #f3f3f3;
+	}
+
+	.btn-default {
+		background-color: #3e51ad;
+		padding: 5px 6px 3px;
+		height: 34px;
+
+		&:hover {
+			background-color: #2c45bd;
+		}
 	}
 }
 

@@ -133,47 +133,34 @@ body {
   }
 }
 
-/* line 141, ../sass/screen.scss */
-.form-group {
-  clear: both;
-}
-/* line 144, ../sass/screen.scss */
-.form-group .form-input-container {
-  position: relative;
-}
-/* line 147, ../sass/screen.scss */
-.form-group .form-input-container .icon-search {
-  cursor: pointer;
-  color: #2c45bd;
-  font-size: 20px;
-  line-height: 0;
-  position: absolute;
-  right: 15px;
-  text-align: center;
-  top: 50%;
-  z-index: 1;
-  -moz-animation: bounceIn 750ms linear infinite alternate;
-  -webkit-animation: bounceIn 750ms linear infinite alternate;
-  -o-animation: bounceIn 750ms linear infinite alternate;
-  animation: bounceIn 750ms linear infinite alternate;
-}
-/* line 164, ../sass/screen.scss */
-.form-group .btn {
-  margin: 10px auto 0;
-  text-transform: uppercase;
-  width: 150px;
-  color: #2c45bd;
-  font-weight: 600;
-  border: 1px solid #2c45bd;
-  display: block;
-}
-/* line 174, ../sass/screen.scss */
-.form-group .form-control,
-.form-group .btn {
+/* line 143, ../sass/screen.scss */
+.search-form input.form-control {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+/* line 147, ../sass/screen.scss */
+.search-form .icon-search {
+  cursor: pointer;
+  color: white;
+  font-size: 19px;
+}
+/* line 153, ../sass/screen.scss */
+.search-form .btn-default,
+.search-form .btn-default:hover,
+.search-form .form-control {
+  border-color: #f3f3f3;
+}
+/* line 159, ../sass/screen.scss */
+.search-form .btn-default {
+  background-color: #3e51ad;
+  padding: 5px 6px 3px;
+  height: 34px;
+}
+/* line 164, ../sass/screen.scss */
+.search-form .btn-default:hover {
+  background-color: #2c45bd;
+}
 
-/* line 180, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .search-result {
   position: relative;
   color: white;
@@ -183,25 +170,25 @@ body {
   text-align: center;
 }
 @media only screen and (min-width: 768px) {
-  /* line 180, ../sass/screen.scss */
+  /* line 170, ../sass/screen.scss */
   .search-result {
     height: 230px;
     padding: 20px;
   }
 }
 
-/* line 195, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .restaurant-name {
   font-size: 36px;
   margin-top: 40px;
 }
 
-/* line 200, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .grade-info {
   margin-bottom: 25px;
 }
 
-/* line 204, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .error-message {
   position: absolute;
   bottom: 30px;
@@ -211,27 +198,27 @@ body {
   max-width: 300px;
 }
 @media only screen and (min-width: 768px) {
-  /* line 204, ../sass/screen.scss */
+  /* line 194, ../sass/screen.scss */
   .error-message {
     font-size: 18px;
     max-width: 100%;
   }
 }
 
-/* line 218, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 button.close {
   color: white;
   opacity: 1;
   font-size: 26px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-/* line 224, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 button.close:focus, button.close:hover {
   color: #2c45bd;
   opacity: 1;
 }
 
-/* line 233, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 .loader {
   position: relative;
   width: 45px;
@@ -239,7 +226,7 @@ button.close:focus, button.close:hover {
   margin: 40px auto;
   animation: spin 2s ease-in-out infinite;
 }
-/* line 239, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 .loader .bubble-1,
 .loader .bubble-2 {
   position: absolute;
@@ -249,16 +236,16 @@ button.close:focus, button.close:hover {
   border-radius: 100%;
   background-color: #2c45bd;
 }
-/* line 249, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .loader .bubble-2 {
   top: auto;
   bottom: 0;
 }
-/* line 254, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 .loader .bubble-1, .loader .bubble-2 {
   animation: bounce 2s ease-in-out infinite;
 }
-/* line 258, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 .loader .bubble-2 {
   animation-delay: -1.0s;
 }
@@ -282,7 +269,7 @@ button.close:focus, button.close:hover {
   font-weight: normal;
   font-style: normal;
 }
-/* line 293, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -297,12 +284,12 @@ button.close:focus, button.close:hover {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 298, ../sass/screen.scss */
 .icon-restaurant-cutlery:before {
   content: "\e900";
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 .icon-search:before {
   content: "\e986";
 }
