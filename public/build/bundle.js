@@ -21905,7 +21905,7 @@
 					),
 					_react2.default.createElement(
 						'form',
-						{ role: 'search', className: 'search-form' },
+						{ role: 'search', className: 'search-form', onSubmit: this.submitSearch.bind(this) },
 						_react2.default.createElement(
 							'div',
 							{ className: 'input-group' },
@@ -21915,7 +21915,7 @@
 								{ className: 'input-group-btn' },
 								_react2.default.createElement(
 									'button',
-									{ className: 'btn btn-default', type: 'submit', onClick: this.submitSearch.bind(this) },
+									{ className: 'btn btn-default', type: 'submit' },
 									_react2.default.createElement('span', { className: 'icon-search' })
 								)
 							)

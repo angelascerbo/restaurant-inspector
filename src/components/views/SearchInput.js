@@ -47,11 +47,11 @@ class SearchInput extends Component {
 					</div>
 				</div>
 
-				<form role="search" className="search-form">
+				<form role="search" className="search-form" onSubmit={this.submitSearch.bind(this)}>
 					<div className="input-group">
 						<input type="text" className="form-control" onChange={this.updateSearch.bind(this)} onFocus={this.inputActive.bind(this)} placeholder={placeholderText}/>
 						<span className="input-group-btn">
-							<button className="btn btn-default" type="submit" onClick={this.submitSearch.bind(this)}><span className="icon-search"></span></button>
+							<button className="btn btn-default" type="submit"><span className="icon-search"></span></button>
 						</span>
 					</div>
 						{ toggleSearchError }
