@@ -22010,7 +22010,7 @@
 					_react2.default.createElement(
 						'h4',
 						null,
-						'This restaurant was last inspection on: ',
+						'This restaurant\'s last inspection was on: ',
 						formattedDate
 					)
 				);
